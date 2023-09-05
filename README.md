@@ -38,3 +38,9 @@ semanage user -lC
 semanage login -lC
 semanage permissive -lC
 ```
+```
+getsebool -a | grep something
+```
+```
+named-checkzone zone_name /path/to/zone/file
+```
