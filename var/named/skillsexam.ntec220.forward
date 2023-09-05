@@ -14,3 +14,5 @@ server   CNAME myserver
 pc       CNAME mypc
 website1 CNAME myserver
 website2 CNAME myserver
+; website3 A    10.128.12.201
+; website4 A    10.128.12.202

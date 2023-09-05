@@ -1,4 +1,5 @@
 $TTL 1D
+; $ORIGIN 12.128.10.in-addr.arpa.
 @ IN SOA myserver.skillsexam.ntec220. root.skillsexam.ntec220. (
       2023000999 ; serial
         1D       ; refresh
@@ -7,5 +8,6 @@ $TTL 1D
         3H )     ; minimum
 
      NS  myserver.
+;    NS myserver.skillsexam.ntec220.
 254  PTR myserver.skillsexam.ntec220.
 240  PTR mypc.skillsexam.ntec220.
