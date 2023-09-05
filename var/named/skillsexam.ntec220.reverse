@@ -6,6 +6,6 @@ $TTL 1D
         1W       ; expire
         3H )     ; minimum
 
-         NS  myserver.
-254      PTR myserver.skillsexam.ntec220.
-240      PTR mypc.skillsexam.ntec220.
+     NS  myserver.
+254  PTR myserver.skillsexam.ntec220.
+240  PTR mypc.skillsexam.ntec220.
