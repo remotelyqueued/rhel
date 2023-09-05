@@ -30,3 +30,11 @@ root@myserver ~/rhel9 # ip -br a
 lo               UNKNOWN        127.0.0.1/8 ::1/128 
 ens192           UP             10.128.12.254/24
 ```
+```
+semanage boolean -lC
+semanage fcontext -lC
+semanage port -lC
+semanage user -lC
+semanage login -lC
+semanage permissive -lC
+```
