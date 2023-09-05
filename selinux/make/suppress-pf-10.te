@@ -1,0 +1,13 @@
+policy_module(suppress-pf-10, 1.0)
+
+require {
+    type rhsmcertd_t, ndc_t, httpd_t, smbd_t, named_t, kernel_t;
+    class system module_request;
+}
+
+# Deny and suppress audit messages
+dontaudit named_t kernel_t:system module_request;
+dontaudit ndc_t kernel_t:system module_request;
+dontaudit httpd_t kernel_t:system module_request;
+dontaudit smbd_t kernel_t:system module_request;
+dontaudit rhsmcertd_t kernel_t:system module_request;

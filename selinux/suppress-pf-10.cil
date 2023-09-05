@@ -1,0 +1,11 @@
+(block suppress-pf-10
+    (version 1.0)
+
+    (typeattributeset cil_gen_require (rhsmcertd_t ndc_t httpd_t smbd_t named_t kernel_t))
+
+    (dontaudit named_t kernel_t (system (module_request)))
+    (dontaudit ndc_t kernel_t (system (module_request)))
+    (dontaudit httpd_t kernel_t (system (module_request)))
+    (dontaudit smbd_t kernel_t (system (module_request)))
+    (dontaudit rhsmcertd_t kernel_t (system (module_request)))
+)
