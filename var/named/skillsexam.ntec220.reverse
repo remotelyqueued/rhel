@@ -1,10 +1,10 @@
 $TTL 1D
-@ IN SOA  myserver.skillsexam.ntec220. root.skillsexam.ntec220. (
+@ IN SOA myserver.skillsexam.ntec220. root.skillsexam.ntec220. (
       2023000999 ; serial
-        1D	 ; refresh
-        1H	 ; retry
-        1W	 ; expire
-        3H )	 ; minimum
+        1D       ; refresh
+        1H       ; retry
+        1W       ; expire
+        3H )     ; minimum
 
          NS  myserver.
 254      PTR myserver.skillsexam.ntec220.

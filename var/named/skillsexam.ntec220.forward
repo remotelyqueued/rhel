@@ -2,15 +2,15 @@ $TTL 1D
 $ORIGIN skillsexam.ntec220.
 @ IN      SOA myserver root (
           2023000999 ; serial
-	        1D   ; refresh
-		1H   ; retry
-		1W   ; expire
-		3H ) ; minimum
+                1D   ; refresh
+                1H   ; retry
+                1W   ; expire
+                3H ) ; minimum
 
           NS    myserver
-myserver  A	10.128.12.254
-mypc	  A	10.128.12.240
-server    CNAME	myserver
-pc	  CNAME	mypc
+myserver  A     10.128.12.254
+mypc      A     10.128.12.240
+server    CNAME myserver
+pc        CNAME mypc
 website1  CNAME myserver
 website2  CNAME myserver
