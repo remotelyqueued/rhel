@@ -123,6 +123,11 @@ AuthorizedKeysFile .ssh/authorized_keys
 
 # override default of no subsystems
 Subsystem sftp /usr/libexec/openssh/sftp-server
+# cockpit
+GatewayPorts no
+AllowTcpForwarding yes
+KeepAlive yes
+Protocol 2
 
 # Example of overriding settings on a per-user basis
 #Match User anoncvs
