@@ -44,3 +44,6 @@ getsebool -a | grep something
 ```
 named-checkzone zone_name /path/to/zone/file
 ```
+```
+rpm -q gpg-pubkey --qf '%{NAME}-%{VERSION}-%{RELEASE}\t%{SUMMARY}\n'
+```
