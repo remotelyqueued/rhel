@@ -23,16 +23,17 @@ alias mv='mv -i'
 # PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\] '
 # PS1='\[\033[01;31m\]\u@\h\[\033[01;31m\] \w \$\[\033[00m\] '
 parse_git_dirty() {
-  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working tree clean" ]] && echo " X"
+  [[ $(git status --porcelain 2> /dev/null) != "" ]] && echo -n " X"
 }
 
 parse_git_branch() {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
-PS1='\[\033[01;31m\]\u@\h\[\033[01;34m\] \w\[\033[01;32m\]$(parse_git_branch)\[\033[01;31m\]$(parse_git_dirty) \$\[\033[00m\] '
+export PS1="\[\033[0;37m\]\u@\h \[\033[0;32m\]\w\[\033[0;33m\]\$(parse_git_branch)\[\033[0;31m\]\$(parse_git_dirty)\[\033[0m\] $ "
 
 source /home/ryan/Downloads/rhel9/scripts/ufetch-crux.sh
+
 export VISUAL=nvim
 export PAGER=bat
 
