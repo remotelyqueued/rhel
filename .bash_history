@@ -17,7 +17,7 @@ sudo grep "SELinux is preventing" /var/log/messages
 sudo semanage login -l
 seinfo -u
 sudo semanage boolean -l | grep on
-id -Z ryan
+id -Z user
 sudo semanage port -l | grep http
 sudo journalctl -t setroubleshoot
 sudo semodule -lfull | grep suppress
@@ -83,7 +83,7 @@ loginctl list-sessions
 tty
 loginctl terminate-session 1
 loginctl list-sessions
-ps aux | grep ryan
+ps aux | grep user
 ps aux | grep bash
 w
 loginctl
@@ -114,7 +114,7 @@ ssh git@10.128.12.200 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
 ssh -p 34522 git@10.128.12.200 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
 cat ~/.ssh/id_rsa.pub | ssh -p 34522 git@localhost "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
 ssh -p 34522 git@localhost
-sudo chown -R ryan:ryan .dotfiles
+sudo chown -R user:user .dotfiles
 sudo dnf group remove "GNOME Desktop"
 sudo dnf group remove "workstation"
 sudo userdel gnome-initial-setup
@@ -136,3 +136,71 @@ gpg --list-keys
 sudo rpm -e gpg-pubkey-11f63c51-3c7dc11d
 sudo rpm -e gpg-pubkey-8916f2a2-64ae6550
 rpm -q gpg-pubkey --qf '%{NAME}-%{VERSION}-%{RELEASE}\t%{SUMMARY}\n'
+ls -dlh /var/www/html/www.local/
+getsebool -a | grep ftp
+chown -R wwwadmin:apache /var/www/html/www.local/
+setsebool -P ftpd_full_access 1
+getsebool -a | grep ftp
+journalctl -u vsftpd
+dnf info selinux-policy-devel
+dnf install selinux-policy-devel
+make -f /usr/share/selinux/devel/Makefile 
+semodule -i suppress-named.pp
+sestatus
+> /var/log/audit/audit.log 
+> /var/log/messages
+journalctl --vacuum-time=1s
+chown ftp:nobody /var/ftp/pub
+ls -lhd /var/ftp/pub
+chmod 755 /var/ftp/pub
+grep "denied" /var/log/audit/audit.log
+chown root:root /var/ftp/pub
+getsebool -a | grep ftp
+journalctl -xeu vsftpd.service
+git checkout -- vsftpd.conf
+setsebool -P ftpd_anon_write 0
+setsebool -P ftpd_use_passive_mode 0
+getsebool -a | grep ftp
+nvim setroubleshoot_database.xml 
+sudo ausearch -m AVC -i -ts recent
+chown git:git /home/git/repos/dotfiles.git
+chmod 755 /home/git/repos/dotfiles.git
+git ls-tree --full-tree --name-only -r HEAD
+rpm -ql samba
+rpm -ql samba | grep etc
+grep -R "disable_ipv6=yes" /etc
+grep -R 'ipv6' .
+grep -R 'work' .
+dnf list installed dhcp*
+userdel -r dhcpd
+cat /etc/passwd | sort
+systemctl disable smb nmb
+systemctl stop smb nmb
+dnf list installed smb nmb
+ssh-keygen -t rsa -b 4096 -C "5797666+remotelyqueued@users.noreply.github.com"
+cat .ssh/id_rsa.pub 
+git remote set-url origin git@github.com:remotelyqueued/rhel9.git
+git push origin main
+semanage fcontext -l | grep samba
+semanage fcontext -l | grep samba_share
+semanage boolean -lC
+semanage fcontext -lC
+semanage user -lC
+semanage permissive -lC
+semanage port -d -t http_port_t -p tcp 8881
+semanage port -d -t http_port_t -p tcp 8882
+semanage port -lC
+hostnamectl
+named-checkconf /etc/named.conf
+git reset
+git remote set-url origin git@github.com:remotelyqueued/rhel9.git
+usermod -d /home/wwwadmin -m wwwadmin
+usermod -d /home/wwwadmin wwwadmin
+semanage boolean -lC
+semanage fcontext -lC
+semanage port -lC
+semanage user -lC
+semanage login -lC
+semanage permissive -lC
+git clone https://github.com/remotelyqueued/rhel9.git
+git remote set-url origin git@github.com:remotelyqueued/rhel9.git
