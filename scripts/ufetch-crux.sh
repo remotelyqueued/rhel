@@ -16,7 +16,7 @@
 # ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-# ###
+# ##
 # modified
 #
 
@@ -69,12 +69,12 @@ if [ -x "$(command -v tput)" ]; then
 fi
 
 # change these
-lc="${reset}${bold}${red}" # labels
-nc="${reset}${bold}${red}" # user and hostname
-ic="${reset}"              # info
-c0="${reset}${red}"        # first color
-c1="${reset}${red}"        # second color
-c2="${reset}${red}"        # third color
+lc="${reset}${bold}${cyan}" # labels
+nc="${reset}${bold}${cyan}" # user and hostname
+ic="${reset}"               # info
+c0="${reset}${cyan}"        # first color
+c1="${reset}${white}"       # second color
+c2="${reset}${yellow}"      # third color
 
 cat <<EOF
 
