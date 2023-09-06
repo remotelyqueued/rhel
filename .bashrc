@@ -25,14 +25,13 @@ alias mv='mv -i'
 parse_git_dirty() {
   [[ $(git status --porcelain 2> /dev/null) != "" ]] && echo -n " X"
 }
-
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
-
 export PS1="\[\033[0;37m\]\u@\h \[\033[0;32m\]\w\[\033[0;33m\]\$(parse_git_branch)\[\033[0;31m\]\$(parse_git_dirty)\[\033[0m\] $ "
 
 source /home/ryan/Downloads/rhel9/scripts/ufetch-crux.sh
+source /usr/share/fzf/shell/key-bindings.bash
 
 export VISUAL=nvim
 export PAGER=bat
