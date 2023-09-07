@@ -204,3 +204,41 @@ semanage login -lC
 semanage permissive -lC
 git clone https://github.com/remotelyqueued/rhel9.git
 git remote set-url origin git@github.com:remotelyqueued/rhel9.git
+ls -lhR httpd
+chmod 750 -R /var/www/html
+testparm
+journalctl --vacuum-time=1s
+for f in *; do > "$f"; done
+subscription-manager repos --enable codeready-builder-for-rhel-9-$(arch)-rpms
+dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
+ranger --copy-config=all
+nvim rc.conf
+nvim rifle.conf
+which bat
+echo $VISUAL
+echo $PAGER
+ranger
+nmcli
+bat machine-id 
+bat mtab
+bat nsswitch.conf
+ssh-keygen -t rsa -b 4096 -C "5797666+remotelyqueued@users.noreply.github.com"
+ssh-add ~/.ssh/id_rsa
+cat id_rsa.pub 
+git remote set-url origin git@github.com:remotelyqueued/rhel9.git
+chown -R root:named named/skillsexam.ntec220.zones 
+git config --global --edit
+ausearch -m avc -ts recent
+sealert
+sealert -a /var/log/audit/audit.log
+hostnamctl
+hostnamectl
+named-checkzone skillsexam.ntec220 /var/named/skillsexam.ntec220.forward 
+rndc dumpdb -cache
+rndc dumpdb -cache
+grep ok-server cache_dump.db 
+rndc flush
+rndc reload
+rndc dumpdb -cache
+grep ok-server cache_dump.db 
+cat cache_dump.db 
