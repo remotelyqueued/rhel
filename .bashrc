@@ -12,7 +12,7 @@ fi
 export PATH
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
-# export SYSTEMD_PAGER=
+export SYSTEMD_PAGER=bat
 
 # User specific aliases and functions
 alias rm='rm -i'
@@ -22,22 +22,29 @@ alias mv='mv -i'
 # PS1='\[\033[01;31m\][\u@\h \W]\\$\[\033[00m\] '
 # PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\] '
 # PS1='\[\033[01;31m\]\u@\h\[\033[01;31m\] \w \$\[\033[00m\] '
+
 parse_git_dirty() {
   [[ $(git status --porcelain 2> /dev/null) != "" ]] && echo -n " X"
 }
+
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
+
 export PS1="\[\033[1;32m\]\u@\h \[\033[0;00m\]\w\[\033[0;34m\]\$(parse_git_branch)\[\033[0m\]\[\033[0;31m\]\$(parse_git_dirty)\[\033[0;00m\] $ "
 
-
-source /home/ryan/Downloads/rhel9/scripts/ufetch-crux.sh
+source /home/rhel9/rhel9/scripts/ufetch-crux.sh
 source /usr/share/fzf/shell/key-bindings.bash
 
 export VISUAL=nvim
 export PAGER=bat
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANROFFOPT="-c"
 
 alias ls='ls --color=auto'
 alias ip='ip --color=auto'
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
+
+alias journal='journalctl -f \
+  | bat --paging=never -l log'
